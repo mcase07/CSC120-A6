@@ -18,11 +18,19 @@ public class Library extends Building {
     this.collection.put(title, true);
   }
   
+  // this works and throws runtime exception
   public void removeTitle(String title){
+    if (!collection.contains(title)) {
+      throw new RuntimeException("We can't remove a book we don't have!");
+  }
     this.collection.remove(title);
   }
 
+  // this works and throws runtime exception
   public void checkOut(String title){
+    if (!this.isAvailable(title)){
+      throw new RuntimeException("Sorry, this book is already checked out!");
+    }
     this.collection.replace(title, false);
   }
 
@@ -60,6 +68,7 @@ public class Library extends Building {
     System.out.println(Neilson.collection);
     System.out.println(Neilson.containsTitle("Green Eggs & Ham"));
     System.out.println(Neilson.isAvailable("Green Eggs & Ham")); 
+    Neilson.checkOut("Green Eggs & Ham");
     Neilson.checkOut("Green Eggs & Ham");
     System.out.println(Neilson.isAvailable("Green Eggs & Ham"));
     Neilson.addTitle("Calvin & Hobbes");
