@@ -1,4 +1,3 @@
-/* This is a stub for the Cafe class */
 public class Cafe extends Building {
     
     //attributes are all set to private so no one else can change them!
@@ -18,11 +17,23 @@ public class Cafe extends Building {
         System.out.println("You have built a cafe: ☕");
     }
 
+    
+    /**
+     * Checks the stock of the cafe 
+     * @return concatenation of the total stock
+     */
     public String getStock(){
         return "The " + this.name + " has " + this.nCoffeOunces + " ounces of coffee, " + 
-        this.nSugarPackets + " packets of sugar, " + this.nCreams + " number of creams, and " + this.nCups + " cups";
+        this.nSugarPackets + " packets of sugar, " + this.nCreams + " number of creams, and " + this.nCups + " cups.";
     }
 
+    /**
+     * Restocks the cafe with set number of items
+     * @param nCoffeeOunces ounces of coffee
+     * @param nSugarPackets number of sugar packets
+     * @param nCreams number of creams
+     * @param nCups number of cups 
+     */
     private void restock(int nCoffeOunces, int nSugarPackets, int nCreams, int nCups){
         this.nCoffeOunces = nCoffeOunces;
         this.nSugarPackets = nSugarPackets;
@@ -30,7 +41,12 @@ public class Cafe extends Building {
         this.nCups = nCups;
     }
     
-    //change back to void after testing
+    /**
+     * Checks the stock then sells a coffee with specified parameters and subtracts from stock
+     * @param size ounces of coffee
+     * @param sugars number of sugar packets
+     * @param creams number of creams
+     */
     public void sellCoffee(int size, int sugars, int creams){
         if (size > this.nCoffeOunces || sugars > this.nSugarPackets || creams > this.nCreams || this.nCups < 0){
             restock(100, 200, 200, 50);

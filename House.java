@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-/* This is a stub for the House class */
 
 public class House extends Building {
 
@@ -58,7 +57,7 @@ public class House extends Building {
 
   /**
    * Checks the number of residents
-   * @return Integer number of residents
+   * @return number of residents
    */
   public int getNResidents(){ 
     return residents.size();

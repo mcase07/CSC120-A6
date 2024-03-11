@@ -85,7 +85,6 @@ public class Library extends Building {
     return false;
   }
 
-  //
   /**
    * Iterates through each set of key and value using Set<Entry>  
    */
@@ -103,7 +102,7 @@ public class Library extends Building {
 
     Neilson.removeTitle("Calvin & Hobbes");
     Neilson.removeTitle("Green Eggs & Ham");
-    
+
     System.out.println(Neilson.containsTitle("Green Eggs & Ham"));
     System.out.println(Neilson.isAvailable("Green Eggs & Ham"));
 
