@@ -1,5 +1,6 @@
 /* This is a stub for the Cafe class */
 public class Cafe extends Building {
+    
     //attributes are all set to private so no one else can change them!
     private int nCoffeOunces;
     private int nSugarPackets;
