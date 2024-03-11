@@ -10,7 +10,7 @@ public class House extends Building {
   public House(String name, String address, int nFloors, 
               boolean hasElevator, boolean hasDiningRoom) { //don't need to pass in an empty arrayList
     super(name, address, nFloors); // calling parent's attribute; is a Building
-    // with...
+
     this.hasElevator = hasElevator;
     this.hasDiningRoom = hasDiningRoom;
     this.residents = new ArrayList<String>();
@@ -18,12 +18,17 @@ public class House extends Building {
     System.out.println("You have built a house: 🏠");
   }
 
-  //accessor for elevator
+  /**
+   * Checks if there's an elevator
+   * @return T/F does the house have an elevator?
+   */
   public boolean getHasElevator(){
     return this.hasElevator;
   }
 
-  //tells user if there's an elevator using accessor
+  /**
+   * Tells the user if there's an elevator using the accessor
+   */
   public void outHasElevator(){
     if (this.getHasElevator()){
       System.out.println(this.name + " has an elevator.");
@@ -32,12 +37,17 @@ public class House extends Building {
     }
   }
 
-  //accessor for dining room
+  /**
+   * Checks if there's a dining room
+   * @return T/F does the house have a dining room?
+   */
   public boolean getHasDiningRoom(){
     return this.hasDiningRoom;
   }
 
-  //tells user if there's a dining room using accessor
+  /**
+   * Tells the user if there's a dining room using the accessor
+   */
   public void outHasDiningRoom(){
     if (this.getHasDiningRoom()){
       System.out.println(this.name + " has a dining room!");
@@ -46,12 +56,17 @@ public class House extends Building {
     }
   }
 
-  //accessor for number of residents
+  /**
+   * Checks the number of residents
+   * @return Integer number of residents
+   */
   public int getNResidents(){ 
     return residents.size();
   }
 
-  //tells user how many residents in the house using accessor
+  /**
+   * Tells the user the number of residents using the accessor
+   */
   public void outNResidents(){
     if (this.getNResidents() == 0 || this.getNResidents() > 1){
       System.out.println(this.name + " has " + this.getNResidents() + " residents.");
@@ -60,15 +75,20 @@ public class House extends Building {
     }
   }
 
-  //check to see if they live here
+  /**
+   * Checks if someone specific lives in the house
+   * @return T/F does the person live in the house?
+   */
   public boolean isResident(String person){
     if (residents.contains(person)){
-      return true; //add name + "is a resident"?    
+      return true; 
     }
-    return false; //add name + "is not a resident"?
+    return false;
   }
 
-  //tells user if someone lives in the house using the method above
+  /**
+   * Tells the user if someone lives in the house using the accessor
+   */
   public void outIsResident(String person){
     if (this.isResident(person)){
       System.out.println(person + " is a resident of this house.");
@@ -77,14 +97,20 @@ public class House extends Building {
     }
   }
 
-  //move someone in
+  /**
+   * Moves someone into a house
+   * @param name name of the person moving in
+   */
   public void moveIn(String name){
     if (!residents.contains(name)){
       residents.add(name);
     }
   }
 
-  //move someone out 
+  /**
+   * Moves someone out of a house if they live there
+   * @param name name of the person moving out
+   */
   public String moveOut(String name){
     if (residents.contains(name)){
       residents.remove(name);
