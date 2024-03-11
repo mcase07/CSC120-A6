@@ -2,7 +2,6 @@ import java.util.Hashtable;
 import java.util.Map.Entry;
 import java.util.Set;
 
-/* This is a stub for the Library class */
 public class Library extends Building {
 
   private Hashtable<String, Boolean> collection;
@@ -15,13 +14,20 @@ public class Library extends Building {
     System.out.println("You have built a library: 📖");
   }
 
+  /**
+   * Adds a title to the collection
+   * @param title title of the book being added 
+   */
   public void addTitle(String title){
     this.collection.put(title, true);
   }
   
-  // this works by checking if the key exists before removing
+  /**
+   * Removes a title from the collection if it's already there 
+   * @param title title of the book being removed 
+   */
   public void removeTitle(String title){
-    if (collection.containsKey(title)) {
+    if (this.containsTitle(title)) {
       this.collection.remove(title);
       System.out.println(title + " successfully removed.");
     } else{
@@ -29,7 +35,10 @@ public class Library extends Building {
     }
   }
 
-  // this works by checking if the title is available before checking out
+  /**
+   * Checks a title out if it's already there by changing the value in Hashtable 
+   * @param title title of the book being checked out 
+   */
   public void checkOut(String title){
     if (this.isAvailable(title)){
       this.collection.replace(title, false);
@@ -39,7 +48,10 @@ public class Library extends Building {
     } 
   }
 
-  //this works by checking if the title is already checked out before returning
+  /**
+   * Returns a title if it's been checked out by changing the value in Hashtable 
+   * @param title title of the book being returned 
+   */
   public void returnBook(String title){
     if (!this.isAvailable(title)){
       this.collection.replace(title, true);
@@ -49,7 +61,11 @@ public class Library extends Building {
     }
   }
 
-  // change from boolean? so that something intelligible comes back?
+  /**
+   * Checks if a the collection has a title  
+   * @param title title of the book
+   * @return T/F is the title within the collection?
+   */
   public boolean containsTitle(String title){
     if(this.collection.containsKey(title)){
       return true;
@@ -57,6 +73,11 @@ public class Library extends Building {
     return false;
   }
 
+  /**
+   * Checks if a title is available 
+   * @param title title of the book
+   * @return T/F is the title available?
+   */
   public boolean isAvailable(String title){
     if(this.collection.get(title).equals(true)){
       return true;
@@ -64,7 +85,10 @@ public class Library extends Building {
     return false;
   }
 
-  //iterates through each set of key and value using Set<Entry> and souts them
+  //
+  /**
+   * Iterates through each set of key and value using Set<Entry>  
+   */
   public void printCollection(){
     Set<Entry<String, Boolean>> entrySet = collection.entrySet();
     for (Entry<String, Boolean> entry : entrySet){
@@ -76,19 +100,18 @@ public class Library extends Building {
     Library Neilson = new Library("Neislon", "6 Neilson Way", 4);
     System.out.println(Neilson);
     Neilson.addTitle("Green Eggs & Ham");
-    // Neilson.removeTitle("Calvin & Hobbes");
-    // Neilson.removeTitle("Green Eggs & Ham");
-    // System.out.println(Neilson.containsTitle("Green Eggs & Ham"));
-    // System.out.println(Neilson.collection);
-    // System.out.println(Neilson.containsTitle("Green Eggs & Ham"));
-    // System.out.println(Neilson.isAvailable("Green Eggs & Ham"));
+
+    Neilson.removeTitle("Calvin & Hobbes");
+    Neilson.removeTitle("Green Eggs & Ham");
+    
+    System.out.println(Neilson.containsTitle("Green Eggs & Ham"));
+    System.out.println(Neilson.isAvailable("Green Eggs & Ham"));
+
     Neilson.returnBook("Green Eggs & Ham"); 
     Neilson.checkOut("Green Eggs & Ham");
-    Neilson.returnBook("Green Eggs & Ham"); 
-    // Neilson.checkOut("Green Eggs & Ham");
-    // Systemout.println(Neilson.isAvailable("Green Eggs & Ham"));
-    // Neilson.addTitle("Calvin & Hobbes");
-    // Neilson.printCollection();
+    
+    Neilson.addTitle("Calvin & Hobbes");
+    Neilson.printCollection();
   }
 
 }
