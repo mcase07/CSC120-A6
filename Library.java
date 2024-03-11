@@ -18,8 +18,6 @@ public class Library extends Building {
   public void addTitle(String title){
     this.collection.put(title, true);
   }
-
-  // do try catch instead!
   
   // this works by checking if the key exists before removing
   public void removeTitle(String title){
@@ -41,7 +39,7 @@ public class Library extends Building {
     } 
   }
 
-  // this works by checking if the title is already checked out before returning
+  //this works by checking if the title is already checked out before returning
   public void returnBook(String title){
     if (!this.isAvailable(title)){
       this.collection.replace(title, true);
@@ -49,9 +47,9 @@ public class Library extends Building {
     } else{
       System.out.println("You can't return a book that hasn't been checked out!");
     }
-    
   }
 
+  // change from boolean? so that something intelligible comes back?
   public boolean containsTitle(String title){
     if(this.collection.containsKey(title)){
       return true;
@@ -66,7 +64,7 @@ public class Library extends Building {
     return false;
   }
 
-  //iterates through each set of key and value using Set<Entry> and souts
+  //iterates through each set of key and value using Set<Entry> and souts them
   public void printCollection(){
     Set<Entry<String, Boolean>> entrySet = collection.entrySet();
     for (Entry<String, Boolean> entry : entrySet){
