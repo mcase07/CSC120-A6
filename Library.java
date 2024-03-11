@@ -20,6 +20,7 @@ public class Library extends Building {
    */
   public void addTitle(String title){
     this.collection.put(title, true);
+    System.out.println("Succesfully added " + title + " to the collection.");
   }
   
   /**
@@ -40,12 +41,17 @@ public class Library extends Building {
    * @param title title of the book being checked out 
    */
   public void checkOut(String title){
-    if (this.isAvailable(title)){
-      this.collection.replace(title, false);
-      System.out.println(title + " successfully checked out.");
-    } else{
-      System.out.println("Sorry, this book is already checked out!");
-    } 
+    if (this.containsTitle(title)){
+      if (this.isAvailable(title)){
+        this.collection.replace(title, false);
+        System.out.println(title + " successfully checked out.");
+      } else{
+        System.out.println("Sorry, this book is already checked out!");
+      }
+    }else{
+      System.out.println("This book is not in the collection.");
+    }
+     
   }
 
   /**
@@ -53,11 +59,15 @@ public class Library extends Building {
    * @param title title of the book being returned 
    */
   public void returnBook(String title){
-    if (!this.isAvailable(title)){
-      this.collection.replace(title, true);
-      System.out.println(title + " successfully returned.");
-    } else{
-      System.out.println("You can't return a book that hasn't been checked out!");
+    if (this.containsTitle(title)){
+      if (this.isAvailable(title)){
+        System.out.println("You can't return a book that hasn't been checked out!");
+      } else{
+        this.collection.replace(title, true);
+        System.out.println(title + " successfully returned.");
+      }
+    }else{
+      System.out.println("This book is not in the collection.");
     }
   }
 
@@ -79,10 +89,16 @@ public class Library extends Building {
    * @return T/F is the title available?
    */
   public boolean isAvailable(String title){
-    if(this.collection.get(title).equals(true)){
-      return true;
+    if (this.containsTitle(title)){
+      if(this.collection.get(title).equals(true)){
+        return true;
+      }else{
+        return false;
+      }
+    }else{
+      return false;
     }
-    return false;
+    
   }
 
   /**
